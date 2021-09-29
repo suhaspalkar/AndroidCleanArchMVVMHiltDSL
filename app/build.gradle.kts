@@ -66,30 +66,44 @@ android {
 }
 
 dependencies {
-    //app libs
+    //Theme and UI
     implementation(Libs.AndroidX.coreKtx)
     implementation(Libs.AndroidX.UI.AppCompact.appcompat)
     implementation(Libs.AndroidX.UI.Material.material)
     implementation(Libs.AndroidX.UI.ConstraintLayout.constraintLayout)
+
+    // Lifecycle
     implementation(Libs.AndroidX.Lifecycle.liveDataKtx)
     implementation(Libs.AndroidX.Lifecycle.viewModelKtx)
+
+    // Glide
     implementation(Libs.Glide.glide)
     annotationProcessor(Libs.Glide.glideCompiler)
 
+    // Hilt
     implementation(Libs.DaggerHilt.hiltAndroid)
     kapt(Libs.DaggerHilt.hiltAndroidCompiler)
 
+    // Navigation
     implementation(Libs.AndroidX.Navigation.fragmentKtx)
     implementation(Libs.AndroidX.Navigation.uiKtx)
 
+    // Room
+    implementation(Libs.AndroidX.Room.runtime)
+    kapt(Libs.AndroidX.Room.compiler)
+    implementation(Libs.AndroidX.Room.ktx)
 
-    //test libs
+    // Coroutines
+    implementation(Libs.Coroutines.core)
+    implementation(Libs.Coroutines.android)
+
+    // Test libs
     testImplementation(Libs.Test.junit)
 
     androidTestImplementation(Libs.Test.extJUnit)
     androidTestImplementation(Libs.Test.espressoCore)
 }
 
-//kapt {
-//    correctErrorTypes = true
-//}
+kapt {
+    correctErrorTypes = true
+}

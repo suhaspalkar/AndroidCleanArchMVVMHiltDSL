@@ -50,6 +50,13 @@ object Libs {
             const val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
             const val uiKtx = "androidx.navigation:navigation-ui-ktx:$version"
         }
+
+        object Room{
+            private const val version = "2.3.0"
+            const val runtime = "androidx.room:room-runtime:$version"
+            const val compiler = "androidx.room:room-compiler:$version"
+            const val ktx = "androidx.room:room-ktx:$version"
+        }
     }
 
     object DaggerHilt{
@@ -61,6 +68,12 @@ object Libs {
         private const val version = "4.12.0"
         const val glide = "com.github.bumptech.glide:glide:$version"
         const val glideCompiler = "com.github.bumptech.glide:compiler:$version"
+    }
+
+    object Coroutines{
+        private const val version = "1.5.0"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
     }
 
     object Test {
