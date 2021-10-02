@@ -1,9 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-//    id("kotlin-kapt")
     kotlin("kapt")
-//    id("dagger.hilt.android.plugin")
+    id("dagger.hilt.android.plugin")
     // apply(plugin = "com.google.firebase.crashlytics")
 }
 
@@ -77,8 +76,8 @@ dependencies {
     implementation(Libs.AndroidX.Lifecycle.viewModelKtx)
 
     // Glide
-    implementation(Libs.Glide.glide)
-    annotationProcessor(Libs.Glide.glideCompiler)
+//    implementation(Libs.Glide.glide)
+//    annotationProcessor(Libs.Glide.glideCompiler)
 
     // Hilt
     implementation(Libs.DaggerHilt.hiltAndroid)

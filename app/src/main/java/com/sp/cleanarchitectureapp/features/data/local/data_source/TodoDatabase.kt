@@ -9,7 +9,8 @@ import com.sp.cleanarchitectureapp.features.data.local.entities.Todo
 
 @Database(
     entities = [Todo::class, Task::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class TodoDatabase: RoomDatabase() {
 

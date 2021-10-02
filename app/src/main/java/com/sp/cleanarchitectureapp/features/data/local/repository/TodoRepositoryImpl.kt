@@ -14,43 +14,31 @@ class TodoRepositoryImpl(
     private val todoDao: TodoDao,
     private val taskDao: TaskDao,
 
-) : TodoRepository{
+    ) : TodoRepository{
 
-    override suspend fun deleteTask(task: Task) {
-        return taskDao.deleteTask(task.toEntity())
-    }
+    override suspend fun deleteTask(task: Task) = taskDao.deleteTask(task.toEntity())
 
-    override fun getTasks(): Flow<List<Task>> {
-        return taskDao.getTasks().map {
-            it.map { task ->
-                task.toDomain()
-            }
+    override fun getTasks(): Flow<List<Task>> = taskDao.getTasks().map {
+        it.map { task ->
+            task.toDomain()
         }
     }
 
-    override suspend fun getTaskById(id: Int): Task {
-        return taskDao.getTaskById(id = id).toDomain()
-    }
+    override suspend fun getTaskById(id: Int): Task? = taskDao.getTaskById(id = id)?.toDomain()
 
-    override suspend fun insertTask(task: Task) {
-        taskDao.insertTask(task = task.toEntity())
-    }
+    override suspend fun insertTask(task: Task) = taskDao.insertTask(task = task.toEntity())
 
-    override fun getTodos(): Flow<List<Todo>> {
-       return todoDao.getTodos().map {
-            it.map { todo ->
-                todo.toDomain()
-            }
-        }
-    }
+    override fun getTodos(): Flow<List<Todo>> = todoDao.getTodos().map {
+         it.map { todo ->
+             todo.toDomain()
+         }
+     }
 
-    override suspend fun insertTodo(todo: Todo) {
-        todo.toEntity()?.let { todoDao.insertTodo(todo = it) }
-    }
+    override suspend fun getTodoById(id: Int): Todo? = todoDao.getTodoById(id)?.toDomain()
 
-    override suspend fun deleteTodo(todo: Todo) {
-        todo.toEntity()?.let { todoDao.deleteTodo(todo = it) }
-    }
+    override suspend fun insertTodo(todo: Todo) = todoDao.insertTodo(todo.toEntity())
+
+    override suspend fun deleteTodo(todo: Todo) = todoDao.deleteTodo(todo.toEntity())
 
 }
 

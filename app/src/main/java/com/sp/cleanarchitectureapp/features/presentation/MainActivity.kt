@@ -9,8 +9,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sp.cleanarchitectureapp.R
 import com.sp.cleanarchitectureapp.databinding.MainActivityBinding
 import com.sp.cleanarchitectureapp.features.presentation.todos.TodosFragment
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
-//@EntryPoint
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var _mainActivityBinding: MainActivityBinding
