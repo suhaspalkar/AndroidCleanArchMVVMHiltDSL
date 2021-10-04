@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface TodoRepository {
 
-    fun getTasks(): Flow<List<Task>>
+    fun getTasks(todoId: Int): Flow<List<Task>>
 
     suspend fun getTaskById(id: Int): Task?
 

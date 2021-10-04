@@ -59,9 +59,21 @@ object Libs {
         }
     }
 
-    object DaggerHilt{
+    object DaggerHilt {
         const val hiltAndroid = "com.google.dagger:hilt-android:${Plugins.DaggerHilt.version}"
         const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Plugins.DaggerHilt.version}"
+        const val hiltDaggerCompiler = "com.google.dagger:hilt-compiler:${Plugins.DaggerHilt.version}"
+
+    }
+
+    object Hilt{
+        private const val version = "1.0.0"
+        const val hiltCompiler = "androidx.hilt:hilt-compiler:$version"
+    }
+
+    object HiltViewModel{
+        private const val version = "1.0.0-alpha03"
+        const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:$version"
     }
 
     object Glide {

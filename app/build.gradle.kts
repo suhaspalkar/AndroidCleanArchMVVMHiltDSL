@@ -79,9 +79,12 @@ dependencies {
 //    implementation(Libs.Glide.glide)
 //    annotationProcessor(Libs.Glide.glideCompiler)
 
-    // Hilt
+    //Dagger - Hilt
     implementation(Libs.DaggerHilt.hiltAndroid)
     kapt(Libs.DaggerHilt.hiltAndroidCompiler)
+    kapt(Libs.DaggerHilt.hiltDaggerCompiler)
+    implementation(Libs.HiltViewModel.viewModel)
+    kapt(Libs.Hilt.hiltCompiler)
 
     // Navigation
     implementation(Libs.AndroidX.Navigation.fragmentKtx)

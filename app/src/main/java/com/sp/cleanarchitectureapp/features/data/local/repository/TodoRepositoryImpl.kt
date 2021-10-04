@@ -18,7 +18,7 @@ class TodoRepositoryImpl(
 
     override suspend fun deleteTask(task: Task) = taskDao.deleteTask(task.toEntity())
 
-    override fun getTasks(): Flow<List<Task>> = taskDao.getTasks().map {
+    override fun getTasks(todoId: Int): Flow<List<Task>> = taskDao.getTasksByTodo(todoId).map {
         it.map { task ->
             task.toDomain()
         }

@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 class GetTasks(private var repository: TodoRepository) {
 
-     operator fun invoke(): Flow<List<Task>> {
-        return repository.getTasks()
+     operator fun invoke(todoId: Int): Flow<List<Task>> {
+        return repository.getTasks(todoId)
     }
 
 }

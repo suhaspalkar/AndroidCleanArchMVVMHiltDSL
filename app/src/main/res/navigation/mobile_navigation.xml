@@ -10,5 +10,11 @@
         android:name="com.sp.cleanarchitectureapp.features.presentation.todos.TodosFragment"
         android:label="todos_fragment"
         tools:layout="@layout/todos_fragment" />
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.sp.cleanarchitectureapp.features.presentation.task.TaskFragment"
+        android:label="TaskFragment"
+        tools:layout="@layout/task_fragment"
+        />
 
 </navigation>

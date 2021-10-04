@@ -11,8 +11,10 @@ import com.sp.cleanarchitectureapp.databinding.MainActivityBinding
 import com.sp.cleanarchitectureapp.features.presentation.todos.TodosFragment
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.scopes.ActivityScoped
 
 @AndroidEntryPoint
+@ActivityScoped
 class MainActivity : AppCompatActivity() {
 
     private lateinit var _mainActivityBinding: MainActivityBinding

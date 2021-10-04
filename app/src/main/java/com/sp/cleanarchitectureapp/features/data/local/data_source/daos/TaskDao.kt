@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TaskDao {
 
-    @Query("SELECT * FROM Task")
-    fun getTasks() : Flow<List<Task>>
+    @Query("SELECT * FROM Task WHERE todoId = :todoId")
+    fun getTasksByTodo(todoId: Int) : Flow<List<Task>>
 
     @Query("SELECT * FROM Task WHERE taskId = :id")
     suspend fun getTaskById(id: Int) : Task?

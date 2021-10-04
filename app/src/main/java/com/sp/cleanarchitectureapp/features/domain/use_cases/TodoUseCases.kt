@@ -10,12 +10,12 @@ import com.sp.cleanarchitectureapp.features.domain.use_cases.todo.GetTodo
 import com.sp.cleanarchitectureapp.features.domain.use_cases.todo.GetTodos
 
 class TodoUseCases(
-    getTodos: GetTodos,
-    deleteTodo: DeleteTodo,
-    addTodo: AddTodo,
-    getTodo: GetTodo,
-    getTasks: GetTasks,
-    deleteTask: DeleteTask,
-    addTask: AddTask,
-    getTask: GetTask
+    val getTodos: GetTodos,
+    val deleteTodo: DeleteTodo,
+    val addTodo: AddTodo,
+    val getTodo: GetTodo,
+    val getTasks: GetTasks,
+    val deleteTask: DeleteTask,
+    val addTask: AddTask,
+    val getTask: GetTask
 )
