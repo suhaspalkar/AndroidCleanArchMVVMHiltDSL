@@ -1,7 +1,7 @@
 package com.sp.cleanarchitectureapp.features.domain.repository
 
 import com.sp.cleanarchitectureapp.features.domain.model.Task
-import com.sp.cleanarchitectureapp.features.domain.model.Todo
+import com.sp.cleanarchitectureapp.features.domain.model.TaskList
 import kotlinx.coroutines.flow.Flow
 
 interface TodoRepository {
@@ -14,11 +14,11 @@ interface TodoRepository {
 
     suspend fun deleteTask(task: Task)
 
-    fun getTodos(): Flow<List<Todo>>
+    fun getTaskList(): Flow<List<TaskList>>
 
-    suspend fun getTodoById(id: Int) : Todo?
+    suspend fun getTaskListById(id: Int) : TaskList?
 
-    suspend fun insertTodo(todo: Todo)
+    suspend fun insertTaskList(taskList: TaskList)
 
-    suspend fun deleteTodo(todo: Todo)
+    suspend fun deleteTaskList(taskList: TaskList)
 }

@@ -1,30 +1,30 @@
-package com.sp.cleanarchitectureapp.features.presentation.todos
+package com.sp.cleanarchitectureapp.features.presentation.list
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.sp.cleanarchitectureapp.databinding.TodosFragmentBinding
-import com.sp.cleanarchitectureapp.features.domain.model.Todo
+import com.sp.cleanarchitectureapp.databinding.ListFragmentBinding
+import com.sp.cleanarchitectureapp.features.domain.model.TaskList
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TodosFragment : Fragment() {
-    private val viewModel by viewModels<TodosViewModel>()
-
-//    private val viewModel: TodosViewModel by viewModels()
-    private var _binding: TodosFragmentBinding? = null
+class ListFragment : Fragment() {
+    private val viewModel by viewModels<ListViewModel>()
+    private var _binding: ListFragmentBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private var _todoAdapter = TodoAdapter(object : TodoAdapter.OnTodItemOnClickListener {
-        override fun onItemClick(todo: Todo) {
-            todo.title?.let {
+    private var _listAdapter = ListAdapter(object : ListAdapter.OnTodItemOnClickListener {
+        override fun onItemClick(taskList: TaskList) {
+            taskList.title?.let {
                 _binding?.todoTextInputEditText?.setText(it)
+                _binding?.todoTextInputEditText?.tag = taskList.taskListId
             }
         }
     })
@@ -34,7 +34,7 @@ class TodosFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = TodosFragmentBinding.inflate(inflater, container, false)
+        _binding = ListFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         initializeUI()
@@ -43,14 +43,16 @@ class TodosFragment : Fragment() {
 
     private fun initializeUI() {
 
-        _binding?.todosRecyclerView?.adapter = _todoAdapter
+        _binding?.todosRecyclerView?.adapter = _listAdapter
 
         viewModel.todos.observe(viewLifecycleOwner) {
-            _todoAdapter.todoList = it
+            _listAdapter.taskListList = it
         }
 
         _binding?.addFloatingActionButton?.setOnClickListener {
-            viewModel.addTodo(_binding?.todoTextInputEditText?.text?.toString())
+           val id = _binding?.todoTextInputEditText?.tag as Int?
+
+            viewModel.addTodo(id, _binding?.todoTextInputEditText?.text?.toString(), Color.WHITE)
         }
 
         viewModel.getTodos()

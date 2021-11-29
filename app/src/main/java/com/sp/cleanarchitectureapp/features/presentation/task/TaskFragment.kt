@@ -14,8 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class TaskFragment : Fragment() {
     private val viewModel by viewModels<TaskViewModel>()
 
-//    private val viewModel: TaskViewModel by viewModels()
-
     private var _binding: TaskFragmentBinding? = null
 
     // This property is only valid between onCreateView and

@@ -1,10 +1,10 @@
-package com.sp.cleanarchitectureapp.features.presentation.todos
+package com.sp.cleanarchitectureapp.features.presentation.list.add
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sp.cleanarchitectureapp.features.domain.exception.InvalidTodoException
-import com.sp.cleanarchitectureapp.features.domain.model.Todo
+import com.sp.cleanarchitectureapp.features.domain.model.TaskList
 import com.sp.cleanarchitectureapp.features.domain.use_cases.TodoUseCases
 import com.sp.cleanarchitectureapp.features.presentation.utils.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,11 +17,11 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class TodosViewModel @Inject constructor(
+class AddListViewModel @Inject constructor(
     private val todoUseCases: TodoUseCases
     ) : ViewModel() {
 
-    private val _todos = MutableLiveData<List<Todo>>()
+    private val _todos = MutableLiveData<List<TaskList>>()
     val todos = _todos
 
     private var getTodosJob: Job? = null
@@ -29,22 +29,23 @@ class TodosViewModel @Inject constructor(
 
     fun getTodos() {
         getTodosJob?.cancel()
-        getTodosJob = todoUseCases.getTodos()
+        getTodosJob = todoUseCases.getTaskList()
             .onEach {
                 _todos.value = it
             }
             .launchIn(viewModelScope)
     }
 
-    fun addTodo(title: String?) {
-
+    fun addTodo(id: Int?, title: String?, color: Int) {
         viewModelScope.launch {
             try {
-                todoUseCases.addTodo(
-                    Todo(
+                todoUseCases.addTaskList(
+                    TaskList(
                         title = title,
                         timestamp = System.currentTimeMillis(),
-                        id = _todos.value?.size ?: 1
+                        color = color,
+                        taskListId = id ?: 1
+
                     )
                 )
                 _eventFlow.emit(UiEvent.SaveNote)

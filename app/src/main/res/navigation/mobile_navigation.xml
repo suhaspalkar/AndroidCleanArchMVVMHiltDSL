@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/todosFragment"
-        android:name="com.sp.cleanarchitectureapp.features.presentation.todos.TodosFragment"
+        android:name="com.sp.cleanarchitectureapp.features.presentation.list.ListFragment"
         android:label="todos_fragment"
-        tools:layout="@layout/todos_fragment" />
+        tools:layout="@layout/list_fragment" />
     <fragment
         android:id="@+id/taskFragment"
         android:name="com.sp.cleanarchitectureapp.features.presentation.task.TaskFragment"

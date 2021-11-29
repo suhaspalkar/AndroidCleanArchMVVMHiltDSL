@@ -10,10 +10,10 @@ import com.sp.cleanarchitectureapp.features.domain.use_cases.task.AddTask
 import com.sp.cleanarchitectureapp.features.domain.use_cases.task.DeleteTask
 import com.sp.cleanarchitectureapp.features.domain.use_cases.task.GetTask
 import com.sp.cleanarchitectureapp.features.domain.use_cases.task.GetTasks
-import com.sp.cleanarchitectureapp.features.domain.use_cases.todo.AddTodo
-import com.sp.cleanarchitectureapp.features.domain.use_cases.todo.DeleteTodo
-import com.sp.cleanarchitectureapp.features.domain.use_cases.todo.GetTodo
-import com.sp.cleanarchitectureapp.features.domain.use_cases.todo.GetTodos
+import com.sp.cleanarchitectureapp.features.domain.use_cases.list.AddTaskList
+import com.sp.cleanarchitectureapp.features.domain.use_cases.list.DeleteTaskList
+import com.sp.cleanarchitectureapp.features.domain.use_cases.list.GetTaskListById
+import com.sp.cleanarchitectureapp.features.domain.use_cases.list.GetTaskList
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,10 +47,10 @@ object AppModule {
     @Singleton
     fun provideNoteUseCases(repository: TodoRepository): TodoUseCases {
         return TodoUseCases(
-            getTodos = GetTodos(repository),
-            deleteTodo = DeleteTodo(repository),
-            addTodo = AddTodo(repository),
-            getTodo = GetTodo(repository),
+            getTaskList = GetTaskList(repository),
+            deleteTaskList = DeleteTaskList(repository),
+            addTaskList = AddTaskList(repository),
+            getTaskListById = GetTaskListById(repository),
 
             getTasks = GetTasks(repository),
             deleteTask = DeleteTask(repository),

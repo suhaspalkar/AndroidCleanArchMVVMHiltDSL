@@ -5,10 +5,10 @@ import androidx.room.RoomDatabase
 import com.sp.cleanarchitectureapp.features.data.local.data_source.daos.TaskDao
 import com.sp.cleanarchitectureapp.features.data.local.data_source.daos.TodoDao
 import com.sp.cleanarchitectureapp.features.data.local.entities.Task
-import com.sp.cleanarchitectureapp.features.data.local.entities.Todo
+import com.sp.cleanarchitectureapp.features.data.local.entities.TaskList
 
 @Database(
-    entities = [Todo::class, Task::class],
+    entities = [TaskList::class, Task::class],
     version = 1,
     exportSchema = false
 )

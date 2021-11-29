@@ -1,18 +1,18 @@
-package com.sp.cleanarchitectureapp.features.presentation.todos
+package com.sp.cleanarchitectureapp.features.presentation.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sp.cleanarchitectureapp.databinding.HolderTodoItemBinding
-import com.sp.cleanarchitectureapp.features.domain.model.Todo
+import com.sp.cleanarchitectureapp.features.domain.model.TaskList
 import kotlin.properties.Delegates
 
 
-class TodoAdapter(val onTodItemOnClickListener: OnTodItemOnClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ListAdapter(val onTodItemOnClickListener: OnTodItemOnClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var todoList: List<Todo> by Delegates.observable(emptyList()) { _, _, _ ->
+    var taskListList: List<TaskList> by Delegates.observable(emptyList()) { _, _, _ ->
 
-        notifyItemRangeChanged(0, todoList.size)
+        notifyItemRangeChanged(0, taskListList.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -22,9 +22,9 @@ class TodoAdapter(val onTodItemOnClickListener: OnTodItemOnClickListener) : Recy
         return PostViewHolder(holderPostBinding)
     }
 
-    override fun getItemCount(): Int = todoList.size
+    override fun getItemCount(): Int = taskListList.size
 
-    private fun getItem(position: Int) = todoList[position]
+    private fun getItem(position: Int) = taskListList[position]
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -34,19 +34,19 @@ class TodoAdapter(val onTodItemOnClickListener: OnTodItemOnClickListener) : Recy
     inner class PostViewHolder(private val holderPostBinding: HolderTodoItemBinding) :
         RecyclerView.ViewHolder(holderPostBinding.root) {
 
-        fun onBind(todo: Todo) {
+        fun onBind(taskList: TaskList) {
             with(holderPostBinding) {
-                todoTitleTextView.text = todo.title
+                todoTitleTextView.text = taskList.title
             }
             
             itemView.setOnClickListener {
-                onTodItemOnClickListener.onItemClick(todo)
+                onTodItemOnClickListener.onItemClick(taskList)
             }
         }
     }
 
     interface OnTodItemOnClickListener {
-        fun onItemClick(todo: Todo)
+        fun onItemClick(taskList: TaskList)
     }
 
 }

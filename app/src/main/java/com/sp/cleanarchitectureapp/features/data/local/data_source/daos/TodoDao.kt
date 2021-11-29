@@ -1,22 +1,21 @@
 package com.sp.cleanarchitectureapp.features.data.local.data_source.daos
 
 import androidx.room.*
-import com.sp.cleanarchitectureapp.features.data.local.entities.Task
-import com.sp.cleanarchitectureapp.features.data.local.entities.Todo
+import com.sp.cleanarchitectureapp.features.data.local.entities.TaskList
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TodoDao {
 
-    @Query("SELECT * FROM Todo")
-    fun getTodos() : Flow<List<Todo>>
+    @Query("SELECT * FROM TaskList")
+    fun getTodos() : Flow<kotlin.collections.List<TaskList>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTodo(todo: Todo)
+    suspend fun insertTodo(taskList: TaskList)
 
-    @Query("SELECT * FROM Todo WHERE todoId = :id")
-    suspend fun getTodoById(id: Int) : Todo?
+    @Query("SELECT * FROM TaskList WHERE taskListId = :id")
+    suspend fun getTodoById(id: Int) : TaskList?
 
     @Delete
-    suspend fun deleteTodo(todo: Todo)
+    suspend fun deleteTodo(taskList: TaskList)
 }
