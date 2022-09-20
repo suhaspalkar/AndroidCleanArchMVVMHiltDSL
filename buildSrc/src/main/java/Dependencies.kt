@@ -1,6 +1,6 @@
 object Plugins{
     object AgpGradle {
-        private const val version = "7.0.2"
+        private const val version = "7.0.4"
         const val agp = "com.android.tools.build:gradle:$version"
 
     }
